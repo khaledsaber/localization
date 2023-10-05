@@ -10,37 +10,38 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key}); 
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      supportedLocales: const [
+        locale: Locale('en')
+        supportedLocales: const [
         Locale('ar'),
-        Locale('en'),
-      ],
-      localizationsDelegates: [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate
-      ],
-      localeListResolutionCallback: (_, supportedLocales) {
-        final Locale deviceLocale = Locale(Platform.localeName.split('_')[0]);
+    Locale('en'),d
+    ],
+    localizationsDelegates: [
+    AppLocalizations.delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate
+    ],
+    localeListResolutionCallback: (_, supportedLocales) {
+    final Locale deviceLocale = Locale(Platform.localeName.split('_')[0]);
 
-        for (var locale in supportedLocales) {
-          if (deviceLocale.languageCode == locale.languageCode) {
-            return deviceLocale;
-          }
-          return supportedLocales.first;
-        }
-      },
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const HomeScreen(),
+    for (var locale in supportedLocales) {
+    if (deviceLocale.languageCode == locale.languageCode) {
+    return deviceLocale;
+    }
+    return supportedLocales.first;
+    }
+    },
+    theme: ThemeData(
+    colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+    useMaterial3: true,
+    ),
+    home: const HomeScreen(),
     );
   }
 }
